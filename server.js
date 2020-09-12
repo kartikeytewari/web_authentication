@@ -1,7 +1,7 @@
 const express=require("express");
 const body_parser=require("body-parser");
 const mongoose=require("mongoose");
-const client=require("client-sessions");
+const sessions=require("client-sessions");
 let app=express();
 
 // body parser middleware
@@ -67,12 +67,27 @@ app.post("/login", (req,res) =>{
             });
         }
 
+        req.session.user_id=user._id;
         res.redirect("/dashboard");
     });
 });
 
-app.get("/dashboard", (req,res) => {
-    res.render("dashboard");
+app.get("/dashboard", (req,res,next) => {
+    if (!(req.session && req.session.user_id)){
+        return res.redirect("/login");
+    }
+
+    User.findById(req.session,userId, (err,user) => {
+        if (err) {
+            return next(err);
+        }
+
+        if (!user){
+            return res.redirect("/login");
+        }
+
+        res.render("dashboard");
+    });
 });
 
 app.listen(3000);
