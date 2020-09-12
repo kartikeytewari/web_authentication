@@ -52,6 +52,18 @@ app.get("/login", (req,res) => {
     res.render("login");
 });
 
+app.post("/login", (req,res) =>{
+    User.findOne({ email: req.body.email}, (err,user) => {
+        if (err || !user || req.body.password !== user.password){
+            return res.render ("login", {
+                error: "Incorrect email or password"
+            });
+        }
+
+        res.redirect("/dashboard");
+    });
+});
+
 app.get("/dashboard", (req,res) => {
     res.render("dashboard");
 });
