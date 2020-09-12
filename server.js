@@ -1,11 +1,18 @@
 const express=require("express");
 const body_parser=require("body-parser");
 const mongoose=require("mongoose");
+const client=require("client-sessions");
 let app=express();
 
 // body parser middleware
 app.use(body_parser.urlencoded({
     extended: false
+}));
+
+app.use(sessions({
+    cookieName: "session",
+    secret: "really_something",
+    duration: 30*60*1000
 }));
 
 // setting configuration
