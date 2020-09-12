@@ -10,5 +10,7 @@ This is a basic website for demonstrating web authentication.
     <li> NodeJS </li>
     <li> ExpressJS </li>
     <li> Pug </li>
+    <li> MongoDB </li>
+    <li> MongooseJS </li>
     <li> Git/Github </li>
 </ol>
