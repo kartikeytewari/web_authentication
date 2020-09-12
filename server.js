@@ -29,7 +29,23 @@ app.get("/register", (req,res) => {
 });
 
 app.post("/register", (req,res) => {
-    res.json(req.body);
+    let user = new User (req.body);
+
+    user.save((err)=>{
+        if (err)
+        {
+            let error="something bad happened! Please try again.";
+
+            if (err.code===11000)
+            {
+                error="email already taken"
+            }
+
+            return res.render("register", {error: error});
+        }
+
+        res.redirect("/dashboard");
+    })
 });
 
 app.get("/login", (req,res) => {
