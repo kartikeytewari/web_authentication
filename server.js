@@ -77,7 +77,7 @@ app.get("/dashboard", (req,res,next) => {
         return res.redirect("/login");
     }
 
-    User.findById(req.session,userId, (err,user) => {
+    User.findById(req.session, user_id, (err,user) => {
         if (err) {
             return next(err);
         }
