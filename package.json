@@ -21,6 +21,6 @@
     "client-sessions": "^0.8.0",
     "mongoose": "^8.4.1",
     "express": "^4.19.2",
-    "pug": "^3.0.2"
+    "pug": "^3.0.3"
   }
 }
