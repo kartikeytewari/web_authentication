@@ -20,7 +20,7 @@
     "body-parser": "^2.2.1",
     "client-sessions": "^0.8.0",
     "mongoose": "^9.0.1",
-    "express": "^5.1.0",
+    "express": "^5.2.0",
     "pug": "^3.0.3"
   }
 }
